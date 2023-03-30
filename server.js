@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+app.set('view engine', 'ejs');
 
 // Set up middleware to check if the current time is within working hours
 app.use((req, res, next) => {
@@ -15,12 +16,16 @@ app.use((req, res, next) => {
 });
 
 // Serve static files (CSS, images, etc.)
-app.use('/public', express.static('public'));
+// app.use('/public', express.static('public'));
 
 // Home page
 app.get('/', (req, res) => {
     res.render('home');
 });
+
+
+// app.set('views', './views');
+
 
 // Our Services page
 app.get('/services', (req, res) => {
